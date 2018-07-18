@@ -48,22 +48,23 @@ class GuessNumberGameEngine {
         return this.input.length === 4 && isNumbers(this.input) && isUniqueDigitalSequence(this.input);
     }
 
-    play(input) {
+    play() {
+        let reply = "Wrong Input，Input again";
         if(this.isValidInput()) {
-            const reply = this.reply();
-            this.history.push({
-                input: this.input.split("").join(" "),
-                output: reply
-            });
+            reply = this.reply();
             this.totalTimes = this.totalTimes + 1;
-        } else {
-            this.history.push({
-                input: this.input.split("").join(" "),
-                output: "Wrong Input，Input again"
-            });
         }
 
-        return this.printGameRecords();
+        this.history.push({
+            input: this.input.split("").join(" "),
+            output: reply
+        });
+
+        return reply;
+    }
+
+    isGameOver() {
+        return this.totalTimes >= 6;
     }
 
     reply() {

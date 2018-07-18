@@ -18,6 +18,11 @@ const GameServer = {
     console.log("Guess Number Game, You have 6 chances to guess!");
     rl.on('line', (input) => {
       this.engine.feed(input).play();
+      this.engine.printGameRecords();
+
+      if(this.engine.isGameOver()) {
+        process.exit(0);
+      }
     });
   }
 };
