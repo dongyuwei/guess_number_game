@@ -41,13 +41,14 @@ class GuessNumberGameEngine {
 
     feed(input){
         this.input = input.replace(/\s/g, "");
+        return this;
     }
 
     isValidInput() {
         return this.input.length === 4 && isNumbers(this.input) && isUniqueDigitalSequence(this.input);
     }
 
-    startGame() {
+    play(input) {
         if(this.isValidInput()) {
             const reply = this.reply();
             this.history.push({
@@ -62,7 +63,7 @@ class GuessNumberGameEngine {
             });
         }
 
-        this.printHistory();
+        return this.printGameRecords();
     }
 
     reply() {
@@ -82,7 +83,7 @@ class GuessNumberGameEngine {
         return `${x}A${y}B`;
     }
 
-    printHistory() {
+    printGameRecords() {
         console.log(`Input\t\t\tOutput`);
         this.history.forEach(item => {
             console.log(`${item.input}\t\t\t${item.output}`);
