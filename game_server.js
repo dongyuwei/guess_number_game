@@ -4,6 +4,9 @@ const { GuessNumberGameEngine } = require("./guess_number_game_engine");
 const GameServer = {
   init: function() {
     this.engine = new GuessNumberGameEngine();
+    if(process.env.DEBUG === "ON") {
+      console.log('init digital sequence:', this.engine.digitalSequence);
+    }
     return this;
   },
   startGameEventLoop: function() {

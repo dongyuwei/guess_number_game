@@ -33,7 +33,7 @@ function generateDigitalSequence() {
 
 class GuessNumberGameEngine {
     constructor() {
-        this.initSequence = generateDigitalSequence();
+        this.digitalSequence = generateDigitalSequence();
 
         this.totalTimes = 0;
         this.history = [];
@@ -69,10 +69,10 @@ class GuessNumberGameEngine {
     reply() {
         const input = this.input;
         const set = new Set();
-        this.initSequence.forEach(number => set.add(number.toString()));
+        this.digitalSequence.forEach(number => set.add(number.toString()));
         
         let x = 0, y = 0;
-        this.initSequence.forEach((number, index) => {
+        this.digitalSequence.forEach((number, index) => {
             if(input.charAt(index) === number.toString()){
                 x = x + 1;
             } else if(set.has(input.charAt(index))) {
