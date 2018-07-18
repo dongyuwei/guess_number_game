@@ -64,11 +64,20 @@ class GuessNumberGameEngine {
     }
 
     isGameOver() {
-        return this.totalTimes >= 6;
+        return this._victory_ || this.totalTimes >= 6;
+    }
+
+    victory() {
+        return this._victory_;
     }
 
     reply() {
         const input = this.input;
+        if(input === this.digitalSequence.join("")) {
+            this._victory_ = true;
+            return "4A0B";
+        }
+
         const set = new Set();
         this.digitalSequence.forEach(number => set.add(number.toString()));
         

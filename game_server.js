@@ -21,6 +21,9 @@ const GameServer = {
       this.engine.printGameRecords();
 
       if(this.engine.isGameOver()) {
+        if(this.engine.victory()) {
+          console.log("you guessed the number!")
+        }
         process.exit(0);
       }
     });
